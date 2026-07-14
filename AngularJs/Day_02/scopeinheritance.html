@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular-min.js"></script>
+</head>
+<body ng-controller="parentController">
+    <h2>Parent Controller</h2>
+    College Name: {{collegeName}}  <br>
+    <hr>
+    <div ng-controller="childController">
+        <h2>Child Controller</h2>
+        College Name: {{collegeName}} <br>
+
+    </div>
+    <script>
+        var app = angular.module('myApp',[]);
+
+        app.controller('parentController', function($scope){
+            $scope.collegeName = "Parul University";
+        });
+        app.controller('childController',function($scope){
+            $scope.collegeName = "CU"
+        });
+    </script>
+
+    
+</body>
+</html>

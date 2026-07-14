@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-controller="studentController">
+   <h2>Angular Filters demo</h2>
+
+   search Student
+   <input type="text" ng-model="searchText" placeholder="Search student">
+   <br><br>
+
+   <table border="1">
+    <tr>
+        <th>Name(uppercase)</th>
+        <th>Department</th>
+        <th>Fees(currency)</th>
+        <th>Percentage</th>
+        <th>Admission Date</th>
+    </tr>
+
+    <tr ng-repeat="student in students | filter:searchText | orderBy:'name'">
+         <td>{{Student.name | uppercase}}</td>
+         <td>{{student.department}}</td>
+         <td>{{student.fees | currency}}</td>
+         <td>{{student.percentage | number:2}}</td>
+         <td>{{student.admissionDate | date:'dd//MM/yyyy'}}</td>
+         <td></td>
+    </tr>
+   </table>
+   <hr>
+   <h3>Limito Filter</h3>
+   Student Name:
+   {{students[0].name | limitTo:3}}
+    
+</body>
+<script>
+    var app = angular.module('app',[]);
+
+    app.controller(studentController, function($scope){
+        $scope.students =  [
+            {
+                name: "Rahul",
+                department: "CSE",
+                fees: 50000,
+                percentage: 85.5,
+                admissionDate: new Date("2020-06-15")
+            },
+            {
+                name: "Ramesh",
+                department: "ECE",
+                fees: 60000,
+                percentage: 75.5,
+                admissionDate: new Date("2021-07-20")
+            },
+             {
+                name: "Suresh",
+                department: "MECH",
+                fees: 80000,
+                percentage: 65.5,
+                admissionDate: new Date("2024-04-12")
+            },
+
+        ];
+    });
+</script>
+</html>

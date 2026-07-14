@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="listCtrl">
+    <ul>
+        <li ng-repeat= "f in fruits">
+            {{f}}
+        </li>
+    </ul>
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('listCtrl',function($scope){
+            $scope.fruits = ['Apple','Banana','Mango'];
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="stdCtrl">
+    <input type="checkbox" ng-model="hideMessage">
+    Hide Message <br>
+    <hr>
+    <!-- ng-hide hides an element when the condition is true -->
+    <h2 ng-hide="hideMessage">Angular is Easy</h2>
+    
+    <script>
+        var app=angular.module('app',[]);
+
+        app.controller('stdCtrl',function($scope){
+            $scope.isLoggedIn = false;
+        })
+    </script>
+</body>
+</html>

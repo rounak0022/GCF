@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular-min.js"></script>
+</head>
+<body ng-controller="resultController">
+    <h2>Result Checker</h2>
+    
+    Enter Marks:
+    <input type="number" ng-model="marks">
+
+    <hr>
+    <h3 ng-if="marks>=40">
+        Result:Pass
+    </h3>
+    <h3 ng-if="marks<40">
+        Result: Fail
+    </h3>
+    <script>
+        var app = angular.module('myApp',[]);
+
+        app.controller('resultController',function($scope){
+            $scope.marks = 0;
+        });
+    </script>
+</body>
+</html>
