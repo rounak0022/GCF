@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app ng-init="name='Rounak'">
+    <!-- Interpolation -->
+     <h3>Hi {{ name }}</h3>
+
+     <!-- ng-bind -->
+      <h3>Hi <span ng-bind="name"></span></h3>
+
+      <!-- ng-bind on attribute is not valid; -->
+    <!-- use ng-attr-title instead -->
+     <p title="{{name}}">Hover Me</p>
+</body>
+</html>

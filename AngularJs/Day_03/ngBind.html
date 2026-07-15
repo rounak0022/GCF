@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="'myCtrl">
+        <h2>ng-bind example</h2>
+        <!-- input using ng-model -->
+         <p>Enter Your Name: </p>
+         <input type="text" ng-model="name">
+         <!-- using ng-bind -->
+          <p ng-bind = "name"></p>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope){
+            $scope.name = "Rounak";
+        });
+    </script>
+</body>
+</html>

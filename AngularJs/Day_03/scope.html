@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <h2>Shopping cart</h2>
+
+    <table border="1">
+        <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+        </tr>
+        <tr ng-repeat="item in items">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+
+        </tr>
+
+    </table>
+    <br>
+    <button ng-click="addItem()">
+        Add Item
+    </button>
+    <h3>Total Price:{{total()}}</h3>
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope){
+            $scope.items= [
+                {
+                    name:"Notebook", price: 60
+                },
+                {name: "Pen",price:10},
+                {name:"Pencil",price:5}
+            ];
+
+            //Add new Item
+
+            $scope.addItem = function(){
+                $scope.items.push({
+                    name: "Eraser",
+                     price:15
+                });
+            }
+
+            //calculate total
+
+            $scope.total = function(){
+                var t=0;
+                angular.forEach($scope.item, function($scope){
+                    t += item.price;
+                });
+                return t;
+            }
+        
+        });
+    </script>
+    
+</body>
+</html>
