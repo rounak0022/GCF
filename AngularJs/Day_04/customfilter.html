@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Filter</title>
+    <script src="angular.min.js"></script>
+
+
+</head>
+<body ng-controller="myCtrl">
+    <h2>AngularJS Custom filters</h2>
+
+    Enter Name:
+    <input type="text" ng-model="name">
+    <br><br>
+
+    Original Name
+    <b>{{name}}</b>
+    <br><br>
+
+    Revrese Name:
+    <b>{{name | reverse}}</b>
+    <script>
+        var app = angular.module("myapp",[]);       
+        app.controller("myCtrl",function($scope){
+            $scope.name ="Vaibhav";
+        });
+        app.filter("reverse",function(){
+            return function(input){
+                if(!input)
+                return "";
+             return input.split("").reverse().join("");
+            }
+        })
+    </script>
+
+
+    
+</body>
+</html>

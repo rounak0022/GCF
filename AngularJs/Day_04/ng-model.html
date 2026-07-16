@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+</head>
+<body ng-controller="studentCtrl">
+    Search Student
+    <input type="text" ng-model="search">
+    <br><br>
+
+    <table border="1" id="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Course</th>
+        </tr>
+        <tr ng-repeat="s in students | filter:search">
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+            <td>{{s.course}}</td>
+        </tr>
+    </table>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('studentCtrl',function($scope){
+            $scope.students = [
+                {
+                id:22,
+                name: "Rounak",
+                course: "AngularJs"
+            },
+            {
+                id: 45,
+                name: "Rohit",
+                course: "ReactJS"
+            },
+            {
+                id: 13,
+                name:"kiran",
+                course: "NodeJs"
+            },
+            {
+                id: 18,
+                name:"virat",
+                course: "Cricket"
+            }
+        ]
+        });
+    </script>
+
+    
+</body>
+</html>

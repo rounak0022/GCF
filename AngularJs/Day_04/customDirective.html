@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Directive</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <student-list></student-list>
+    
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller('myCtrl',function($scope){
+            $scope.student=[
+                {
+                    name: "Rounak",
+                    course: "Angular JS"
+                },
+                {
+                    name: "Rohit",
+                    course: "ReactJS",
+                
+                },
+                {
+                    name: "Kiran",
+                    course: "NodeJS"
+                },
+            ];
+        });
+
+        app.directive("studentList",function(){
+            return{
+                restrict: "E",
+                template:
+                "<ul>" + 
+                    "<li ng-repeat='s in student'>{{s.name}} - {{s.course}}</li>" + 
+                    "</ul>"
+            };
+        });
+    </script>
+</body>
+</html>

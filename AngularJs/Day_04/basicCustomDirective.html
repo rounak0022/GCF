@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Custom Directive</title>
+</head>
+<body>
+    <!-- using E restrict -->
+    <!-- <welcome-message></welcome-message>
+
+    <script>
+        var app=angular.module('myApp', []);
+
+        app.directive("welcomeMessage",function(){
+            return{
+                restrict : "E",
+                template : "<h2>Welcome to AngularJS custom Directive </h2>"
+            };
+        });
+    </script> -->
+ 
+        <!-- using A restrict -->
+    <div welcome-message>Hello</div>
+
+    <script>
+        var app=angular.module('myApp', []);
+
+        app.directive("welcomeMessage",function(){
+            return{
+                restrict : "A",
+                template : "<h2>Welcome to AngularJS custom Directive </h2>"
+            };
+        });
+    </script>
+    
+</body>
+</html>

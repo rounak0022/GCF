@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Directive Definition Object Example</title>
+
+    <!-- AngularJS Library -->
+    <script src="angular.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Student Cards using Custom Directive</h1>
+
+    <!-- Custom Directive -->
+    <student-card
+        name="Rounak"
+        course="AngularJS"
+        color="Blue">
+    </student-card>
+
+    <student-card
+        name="Virat"
+        course="Python"
+        color="red">
+    </student-card>
+
+    <student-card
+        name="Qwerty"
+        course="Java"
+        color="Green">
+    </student-card>
+
+    <script>
+
+        // Create Module
+        var app = angular.module("myApp", []);
+
+        // Create Directive
+        app.directive("studentCard", function () {
+
+            return {
+
+                // Restriction
+                restrict: "E",
+
+                // Isolated Scope
+                scope: {
+                    name: "@",
+                    course: "@",
+                    color: "@"
+                },
+
+                // HTML Template
+                template:
+                    '<div class="card">' +
+                        '<h2>{{name}}</h2>' +
+                        '<h4>Course : {{course}}</h4>' +
+                    '</div>',
+
+                // Link Function
+                link: function (scope, element, attrs) {
+
+                    // Get the inner div
+                    var card = element.find("div");
+
+                    // Apply CSS dynamically
+                    card.css("border", "3px solid " + scope.color);
+                    card.css("padding", "15px");
+                    card.css("width", "250px");
+                    card.css("margin", "15px");
+                    card.css("border-radius", "10px");
+                    card.css("background-color", "#f5f5f5");
+                    card.css("box-shadow", "0px 0px 10px gray");
+                    card.css("font-family", "Arial");
+                    card.css("text-align", "center");
+
+                }
+
+            };
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderBy</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <h2>Students ordered by Name</h2>
+
+    <table border="1" cellpadding="2">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Course</th>
+        </tr>
+        <tr ng-repeat ="s in students | orderBy: 'name'">
+        <td>{{s.id}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.course}}</td>
+        </tr>
+   </table>
+   <script>
+    var app = angular.module('myapp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.students=[
+            {
+                id: 11,
+                name: "rounak",
+                course: "AngularJS"
+            },
+            {
+                id: 18,
+                name:"Vaibhav",
+                course: "ReactJs",
+
+            },
+            {
+                id:50,
+                name:"Abb",
+                course: "Python"
+            }
+        ];
+    })
+
+   </script>
+    
+</body>
+</html> 

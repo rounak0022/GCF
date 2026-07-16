@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <script src="angular.min.js"></script>
+
+</head>
+<body ng-controller ="myctrl">
+    <h2>{{message}}</h2>
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller("myctrl",function($scope,$timeout){
+            $scope.message = "Loading..."
+
+            $timeout(function(){
+                 $scope.message="Welcome to the angularjs Services";
+            
+            },3000);
+        })
+    </script>
+    
+</body>
+</html>

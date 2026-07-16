@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Directive</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <h2>Directive Restriction Demo</h2>
+    <h3>1. Element Restriction (E)</h3>
+    <student></student>
+    <hr>
+    <h3>2. Attribute Restiction (A)</h3>
+    <div>student</div>
+    <hr>
+    <h3>3. class Restriction (C)</h3>
+    <div class="student" ></div>
+    <hr>
+    <h3>4. Comment Restriction (M)</h3>
+    <!-- directive: student -->
+    
+    <script>
+       var app= angular.module("myApp",[]);
+       app.directive("student",function(){
+        return {
+            restrict : "EACM",
+            template : "<h3 style= 'color:blue;'>Student Directive Executed Successfully</h3>"
+        };
+       });
+    </script>
+</body>
+</html>
