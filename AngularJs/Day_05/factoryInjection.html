@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dependency</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="MyController">
+        <h2>{{message}}</h2>
+    </div>
+
+    <script>
+        var app =angular.module('myApp',[]);
+        app.factory("studentFactory",function(){
+            var factory = {};
+            factory.getData = function(){
+                return "Hello from Factory!";
+            };
+            return factory;
+            });
+        
+        app.controller("MyController",function($scope,studentFactory){
+            $scope.message = studentFactory.getData();
+        });
+
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation(Buiilt-in)</title>
+    <script src="angular.min.js"></script>
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <form name="myForm" novalidate>
+        Name:
+        <input type="text" name="uname" ng-model="user.name" required ng-minlength="3">
+
+        <!-- required error -->
+         <span class="error" ng-show="myForm.uname.$touched && myForm.uname.$error.
+         required">Name is required</span>
+
+         <span class="error" ng-show="myForm.uname.$touched && myForm.uname.$error.
+         required">Minimum 3 character required</span>
+         <br><br>
+
+         Email:
+         <input type="email" name="email" ng-model="user.email" required>
+
+         <span class="error" ng-show="myForm.emailc$touched && myForm.email.$error.
+         email">Enter valid email</span>
+        <br><br>
+         <button ng-disabled="myForm.$invalid">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dependency</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <h2>{{msg}}</h2>
+    </div>
+
+    <script>
+        var app =angular.module('myApp',[]);
+        app.service("stdservice",function(){
+            this.getMessage = function(){
+                return "Welcome to angularJS dependency injection";
+
+            };
+        });
+        app.controller("myCtrl",function($scope,stdservice){
+            $scope.msg = stdservice.getMessage();
+        });
+
+    </script>
+
+    
+</body>
+</html>

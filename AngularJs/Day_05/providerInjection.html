@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dependency</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="MyController">
+        <h2>{{message}}</h2>
+    </div>
+
+    <script>
+        // A Provider is the most powerful service type in AngularJS. It allows configuration
+        //  during the application's configuration phase using a $get() method.
+
+        var app =angular.module('myApp',[]);
+        app.provider("studentProvider",function(){
+           this.$get = function(){
+            return {
+                getData: function(){
+                    return "Hello from Provider!";
+                }
+            };
+           };
+        });
+        
+        app.controller("MyController",function($scope,studentProvider){
+            $scope.message = studentProvider.getData();
+        });
+
+    </script>
+
+    
+</body>
+</html>

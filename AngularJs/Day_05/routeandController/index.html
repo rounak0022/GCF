@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>AngularJS Basic Routing</title>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- AngularJS Routing -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+    <style>
+
+body{
+font-family:Arial;
+margin:30px;
+}
+
+a{
+background:green;
+color:white;
+padding:10px 20px;
+text-decoration:none;
+margin-right:10px;
+border-radius:5px;
+}
+
+.card{
+
+margin-top:30px;
+border:1px solid gray;
+padding:20px;
+border-radius:10px;
+
+}
+
+table{
+
+border-collapse:collapse;
+width:100%;
+
+}
+
+table,th,td{
+border:1px solid black;
+padding:10px;
+}
+
+</style>
+
+</head>
+<body>
+    <h2>AngularJS Routing with Controller</h2>
+
+    <a href="#!/">Home</a>
+    <a href="#!/students">Students</a>
+    <div class="card" ng-view></div>
+
+    <script>
+        var app=angular.module("myApp",["ngRoute"]);
+        app.config(function($routeProvider){
+            $routeProvider
+
+            .when("/",{
+                templateUrl:"home.html"})
+
+            .when("/students",{
+                templateUrl:"students.html",
+                controller:"StudentController"
+                })
+            .otherwise({
+                redirectTo:"/"
+            });
+        });
+
+        app.controller("StudentController",function($scope){
+            $scope.students = [
+                {id:101,name:"Rahul",course:"AngularJS"},
+                {id:102,name:"Priya",course:"ReactJS"},
+                {id:103,name:"Amit",course:"NodeJS"},
+                {id:104,name:"Sneha",course:"Python"}
+            ];
+        });
+    </script>
+</body>
+</html>

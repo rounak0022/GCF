@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Password Match Validation</title>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="RegisterController">
+
+    <h2>Student Registration Form</h2>
+
+    <form name="registerForm" ng-submit="register()" novalidate>
+
+        <label>Full Name</label><br>
+        <input type="text"
+               name="fullname"
+               ng-model="student.name"
+               required>
+
+        <br>
+
+        <span style="color:red"
+              ng-show="registerForm.fullname.$touched && registerForm.fullname.$error.required">
+            Name is required
+        </span>
+
+        <br><br>
+
+        <label>Email</label><br>
+
+        <input type="email"
+               name="email"
+               ng-model="student.email"
+               required>
+
+        <br>
+
+        <span style="color:red"
+              ng-show="registerForm.email.$touched && registerForm.email.$error.required">
+            Email is required
+        </span>
+
+        <span style="color:red"
+              ng-show="registerForm.email.$error.email">
+            Invalid Email
+        </span>
+
+        <br><br>
+
+        <label>Password</label><br>
+
+        <input type="password"
+               name="password"
+               ng-model="student.password"
+               required
+               minlength="8">
+
+        <br>
+
+        <span style="color:red"
+              ng-show="registerForm.password.$error.required">
+            Password Required
+        </span>
+
+        <span style="color:red"
+              ng-show="registerForm.password.$error.minlength">
+            Minimum 8 Characters Required
+        </span>
+
+        <br><br>
+
+        <label>Confirm Password</label><br>
+
+        <input type="password"
+               name="confirmPassword"
+               ng-model="student.confirmPassword"
+               password-match="student.password"
+               required>
+
+        <br>
+
+        <span style="color:red"
+              ng-show="registerForm.confirmPassword.$error.required">
+            Confirm Password Required
+        </span>
+
+        <span style="color:red"
+              ng-show="registerForm.confirmPassword.$error.passwordMatch">
+            Password does not match
+        </span>
+
+        <br><br>
+
+        <button
+            type="submit"
+            ng-disabled="registerForm.$invalid">
+            Register
+        </button>
+
+    </form>
+
+    <hr>
+
+    <div ng-show="submitted">
+
+        <h3>Registration Successful</h3>
+
+        <p>Name : {{student.name}}</p>
+
+        <p>Email : {{student.email}}</p>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 1. Include angularjs library -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_ng</title>
+    <script src="angular.min.js"></script>
+</head>
+<!-- 2.  start angularjs app and attached controller -->
+<body ng-app="myApp" ng-controller="RegisterController">
+    <h2>Student Form</h2>
+
+    <!-- 3.input box is connected using ng-model -->
+    Name:
+    <input type="text" ng-model="student.name"> <br><br>
+
+    <!-- ng-model connects input field to $scope.student objects
+     -->
+    Age:
+    <input type="number" ng-model="student.age"> <br><br>
+
+    <h3>Entered Details</h3>
+
+    <!-- 4.Display data using interpolation -->
+     Name: {{student.name}}
+     Age : {{student.age}}
+
+     <script>
+        //5. create angular module
+        var app = angular.module("myApp",[]);
+        //6. creates controller
+        app.controller("formCtrl", function($scope){
+
+            //7. creates empty student object
+            //This object stores name and age
+            $scope.student={};
+        });
+     </script>
+</body>
+</html>
