@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX GET EXAMPLE</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+     <style>
+        body{
+            font-family:Arial;
+            padding:30px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        table,th,td{
+            border:1px solid black;
+            padding:10px;
+        }
+
+        button{
+            padding:10px 20px;
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body ng-controller="myCtrl">
+   <h2>Angular AJAX GET Example</h2>
+   <button ng-click="loadUsers()">Load Users</button>
+
+   <table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr ng-repeat="user in users">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+    </tr>
+   </table>
+   <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl",function($scope,$http){
+        $scope.loadUsers = function(){
+            $http.get("https://jsonplaceholder.typicode.com/users")
+            .then(function(response){
+                $scope.users = response.data;
+            });
+        }; 
+    });
+   </script>
+    
+    
+</body>
+
+
+</html>

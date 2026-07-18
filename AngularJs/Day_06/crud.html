@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h2>Simple AngularJS CRUD</h2>
+
+    <!-- ADD POST -->
+     <input type="text" ng-model="newTitle" placeholder="Enter Title">
+     <button ng-click="addPost()">Add</button>
+
+     <!-- Display Post -->
+      <ul>
+        <li ng-repeat="post in posts">
+            {{post.title}}
+            <button ng-click="deletePost($index)">Delete</button>
+        </li>
+      </ul>
+      <script>
+        var app = angular.module("myApp",[]);
+        app.controller("myCtrl",function($scope){
+            //initial Data
+
+            $scope.posts=[
+                {title:"Angular JS"},
+                {title: "Learn JavaScript"},
+                {title: "Understand CRUD"}
+            ];
+            //add
+            $scope.addPost = function(){
+                if($scope.newTitle){
+                    $scope.posts.push({title:$scope.newTitle});
+                    $scope.newTitle = "";
+                }
+            };
+            //delete
+            $scope.deletePost = function(index){
+                $scope.posts.splice(index,1);
+            };
+        });
+      </script>
+</body>
+</html>

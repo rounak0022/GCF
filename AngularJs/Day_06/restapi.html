@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body{
+            font-family:Arial;
+            padding:30px;
+            background: #f2f2f2;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        table,th,td{
+            border:1px solid black;
+            padding:10px;
+        }
+
+        button{
+            padding:10px 20px;
+            margin-bottom:20px;
+        }
+        .container{
+            display: grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+        }
+    </style>
+</head>
+<body ng-controller="myCtrl">
+    <h2>Users Dashboard</h2>
+    <button ng-click="loadUsers()">Load Users</button>
+    <div class="container">
+        <div class="card" ng-repeat="user in users">
+            <h3>{{user.name}}</h3>
+            <p>Email: {{user.email}}</p>
+            <p>city: {{user.address.city}}</p>
+            <p>Company: {{user.company.name}}</p>
+          
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module("myApp",[]);
+        app.module("myCtrl",function($scope,$http){
+            $scope.loadUsers = function(){
+                $http.get("https://jsonplaceholder.typicode.com/users")
+            }
+            .then(function(response){
+                $scope.users = response.data;
+            });
+        });
+    </script>
+</body>
+</html>
